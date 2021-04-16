@@ -12,6 +12,8 @@ web层服务使用的是spring-boot-starter-web springboot集成的一个版本 
 
 触发条件  在浏览器中输入http://127.0.0.1:8080/post.do?number=100 , number 的值表的就是需要发送的请求数，当number 不为数字时会发生异常。
 
+当正常运行时会以多线程的方式发送number 条请求到 http://127.0.0.1:8080/test.do 当请求成功或者失败时会记录（成功将记录在log.log 文件当中，失败将记录在error.log中）
+
 由于我的idea 版本较低所以使用的是maven 3.3 与之适配
 
 通过 RequestConfig 设置超时时间
