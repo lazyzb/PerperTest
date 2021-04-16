@@ -23,8 +23,11 @@ public class Post extends Thread {
             client.start();
             for(int i=1;i<=postNumber;i++){
                 HttpPost post = new HttpPost("http://127.0.0.1:8080/test.do?number="+i+"");
+                // 设置超时时间
                 RequestConfig config = RequestConfig.custom()
                         .setConnectionRequestTimeout(i*1000) //从连接池中取的连接的最长时间
+                        .setConnectTimeout(i*1000) // 请求超时
+                        .setSocketTimeout(i*1000) // 读取超时
                         .build();
                 post.setConfig(config);
                 int finalI = i;
