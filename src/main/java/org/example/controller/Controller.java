@@ -22,8 +22,10 @@ public class Controller {
             int number = Integer.valueOf(request.getParameter("number"));
             logger.info("正在执行第"+number+"条请求");
          } catch (NullPointerException e){
-            logger.error("参数未获取到，执行失败");
-        }
+            logger.error("并行请求过程中 参数未获取到，执行失败");
+         } catch (NumberFormatException e){
+            logger.error("并行请求过程中，参数的数据类型错误，请给与整形的参数");
+         }
     }
     @RequestMapping("/post.do")
     public String  post(HttpServletRequest request){
