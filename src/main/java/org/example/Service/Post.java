@@ -27,14 +27,16 @@ public class Post extends Thread {
                         .setConnectionRequestTimeout(i*1000) //从连接池中取的连接的最长时间
                         .build();
                 post.setConfig(config);
+                int finalI = i;
                 client.execute(post,new FutureCallback<HttpResponse>(){
 
                     @Override
                     public void completed(HttpResponse httpResponse) {
                         try {
                             String content = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-                            System.out.println(" response content is : " + content);
-                        } catch (IOException e) {
+                            System.out.println(content);
+                            logger.info("第"+ finalI +" 条请求执行成功");
+                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }

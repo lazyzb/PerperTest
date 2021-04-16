@@ -20,7 +20,7 @@ public class Controller {
     public  void  test(HttpServletRequest request){
         try {
             int number = Integer.valueOf(request.getParameter("number"));
-            logger.info("第"+number+"条请求,执行成功");
+            logger.info("正在执行第"+number+"条请求");
          } catch (NullPointerException e){
             logger.error("参数未获取到，执行失败");
         }
